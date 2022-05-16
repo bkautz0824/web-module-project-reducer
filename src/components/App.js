@@ -4,6 +4,9 @@ import React, { useReducer} from 'react';
 import { applyNumber } from '../actions';
 import { changeOperation } from '../actions';
 import { clearDisplay } from '../actions';
+import { setCurrentMemory } from '../actions';
+import { addToMemory } from '../actions';
+import {clearMemory} from '../actions';
 
 import './App.css';
 
@@ -19,17 +22,30 @@ function App() {
 
 
   const handleNumberClick = (number) => {
-    console.log(number)
+    
     dispatch(applyNumber(number))
   }
   
   const handleOperatorChange = (operator) => {
-    console.log(operator)
+    
     dispatch(changeOperation(operator))
   }
 
   const handleClear = () => {
     dispatch(clearDisplay())
+  }
+
+  const handleSetCurrentMemory = () => {
+    dispatch(setCurrentMemory())
+  }
+
+  const handleAddToMemory = () => {
+    console.log(operator)
+    dispatch(addToMemory())
+  }
+
+  const handleClearMemory = () => {
+    dispatch(clearMemory())
   }
 
   return (
@@ -49,9 +65,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick={() => handleAddToMemory()}/>
+              <CalcButton value={"MR"} onClick={() => handleSetCurrentMemory()}/>
+              <CalcButton value={"MC"} onClick={() => handleClearMemory()}/>
             </div>
 
             <div className="row">
